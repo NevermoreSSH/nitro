@@ -7,7 +7,7 @@
 ```
 apt update -y && apt upgrade -y && apt dist-upgrade -y && reboot
  ```
-## Step 1 update Ubuntu 18/20
+## or update Ubuntu 18/20
 ```
 apt-get update && apt-get upgrade -y && apt dist-upgrade -y && update-grub && reboot
 
