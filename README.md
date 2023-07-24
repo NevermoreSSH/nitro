@@ -34,8 +34,5 @@ sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.di
 ✅ XRAY TROJAN TCP XTLS 443<br>
 ✅ XRAY TROJAN TCP TLS 443<br>
 
-## Order script: wa.me/+6285225171738
-##  t.me/todfix667<br> 
-## Testimoni     t.me/NevermoreSSHpremium<br>
             
               
