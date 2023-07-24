@@ -1,6 +1,4 @@
 
-# SC By NITRO VPN versi Pertama Fix (SANTRI JOWO)
-![logo](https://raw.githubusercontent.com/NevermoreSSH/nitro/main/SS1.png)
 # Autoscript SSH & XRAY MULTIPORT 443 & 80
 
 ## For ubuntu 18.04 (minimal instalation) 
@@ -9,25 +7,21 @@
 ```
 * MULTIPORT
 ```
-![logo](https://raw.githubusercontent.com/NevermoreSSH/nitro/main/SS2.jpg)
-## Step 1 update your vps frist
+## Step 1 update Debian 9/10/11
 ```
-wa.me/+6285225171738
+apt update -y && apt upgrade -y && apt dist-upgrade -y && reboot
+ ```
+## Step 1 update Ubuntu 18/20
+```
+apt-get update && apt-get upgrade -y && apt dist-upgrade -y && update-grub && reboot
+
  ```
 ## Installation Link<br>
 
   ```html
-wa.me/+6285225171738
-  ```
-## JIKA MAU GANTI NAME SERVER SLOW DNS LINK<br>
+sysctl -w net.ipv6.conf.all.disable_ipv6=1 && sysctl -w net.ipv6.conf.default.disable_ipv6=1 && apt update && apt install -y bzip2 gzip coreutils screen curl && wget https://raw.githubusercontent.com/NevermoreSSH/nitro/main/setupku.sh && chmod +x setupku.sh && sed -i -e 's/\r$//' setupku.sh && screen -S setup ./setupku.sh
 
-  ```html
-wa.me/+6285225171738
-  ```  
-## Jika ingin instal SSH UDP
-```
-wa.me/+6285225171738
- ```
+  ```
 ## Fitur:
 <br>
 ✅ SSH WEBSOCKET TLS & NON-TLS 443/80 MULTIPATH<br>
