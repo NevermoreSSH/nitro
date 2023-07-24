@@ -1,9 +1,7 @@
 
 # Autoscript SSH & XRAY MULTIPORT 443 & 80
 
-## For ubuntu 18.04 (minimal instalation) 
-## Ubuntu 20.04 (Recomendation) 
-## Debian 10,11  Only For First Time Installation (Update Repo) <br>
+## For ubuntu 18.04/20.04 @ Debian 9/10,11 <br>
 
 ## Step 1 update Debian 9/10/11
 ```
