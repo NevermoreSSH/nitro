@@ -4,9 +4,7 @@
 ## For ubuntu 18.04 (minimal instalation) 
 ## Ubuntu 20.04 (Recomendation) 
 ## Debian 10,11  Only For First Time Installation (Update Repo) <br>
-```
-* MULTIPORT
-```
+
 ## Step 1 update Debian 9/10/11
 ```
 apt update -y && apt upgrade -y && apt dist-upgrade -y && reboot
