@@ -212,7 +212,7 @@ echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━�
 echo -e "\E[39;1;92m                     ⇱ MENU SERVICE ⇲                         \E[0m"
 echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m${NC}"
 echo -e ""
-echo -e " ${BICyan}[${BIWhite}01${BICyan}]${RED} •${NC} ${YELLOW}SSH ${GREEN}MENU        $NC  ${BICyan}[${BIWhite}12${BICyan}]${RED} • ${NC}${YELLOW}GEN-SSL / CERTV $NC"
+echo -e " ${BICyan}[${BIWhite}01${BICyan}]${RED} •${NC} ${YELLOW}SSH ${GREEN}MENU        $NC  ${BICyan}[${BIWhite}12${BICyan}]${RED} • ${NC}${YELLOW}GEN-SSL / RENEW CERT XRAY $NC"
 echo -e " ${BICyan}[${BIWhite}02${BICyan}]${RED} •${NC} ${YELLOW}VMESS ${GREEN}MENU      $NC  ${BICyan}[${BIWhite}13${BICyan}]${RED} • ${NC}${YELLOW}CHANGE BANNER $NC"
 echo -e " ${BICyan}[${BIWhite}03${BICyan}]${RED} •${NC} ${YELLOW}VLESS ${GREEN}MENU      $NC  ${BICyan}[${BIWhite}14${BICyan}]${RED} • ${NC}${YELLOW}CHECK RUNNING SERVICE $NC"
 echo -e " ${BICyan}[${BIWhite}04${BICyan}]${RED} •${NC} ${YELLOW}TROJAN ${GREEN}MENU     $NC  ${BICyan}[${BIWhite}15${BICyan}]${RED} • ${NC}${YELLOW}CHECK TRAFIC $NC"
@@ -230,8 +230,8 @@ echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━�
 echo -e "${BICyan}┌──────────────────────────────────────────────────┐${NC}"
 echo -e "${BICyan}│ ${BOLD}${BLUE}Client    = $Name                           ${NC}"
 echo -e "${BICyan}│ ${BOLD}${BLUE}Expired   = $Exp                            ${NC}"
-echo -e "${BICyan}│ ${BOLD}${BLUE}Developer = NITRO VPN                   ${NC}"
-echo -e "${BICyan}│ ${BOLD}${RED}Version   = SUPER LTS                       ${NC}"
+echo -e "${BICyan}│ ${BOLD}${BLUE}Developer = NevermoreSSH                   ${NC}"
+echo -e "${BICyan}│ ${BOLD}${YELLOW}Version   = NITRO AUTOSCRIPT v1.1                       ${NC}"
 echo -e "${BICyan}└──────────────────────────────────────────────────┘${NC}"
 
 echo
@@ -267,4 +267,4 @@ case $opt in
 0) clear ; menu ;;
 x) exit ;;
 *) echo -e "" ; echo "Press any key to back exit" ; sleep 1 ; ./menu ;;
-esac
+esac 
