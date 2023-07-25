@@ -44,5 +44,6 @@ case $opt in
 4) clear ; cekl ;;
 5) clear ; uservless ;;
 0) clear ; menu ;;
+00) clear ; menu ;;
 *) clear ; menul ;;
 esac
