@@ -5,6 +5,10 @@
 # Auther  : NevermoreSSH
 # (C) Copyright 2022
 # =========================================
+###########- COLOR CODE -##############
+NC="\e[0m"
+COLOR1="\033[0;31m" 
+###########- END COLOR CODE -#########
 clear
 MYIP=$(wget -qO- ipv4.icanhazip.com);
 NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
@@ -35,7 +39,7 @@ NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
         done
 user=$(grep -E "^### " "/etc/xray/config.json" | cut -d ' ' -f 2 | sed -n "${CLIENT_NUMBER}"p)
 tls="$(cat ~/log-install.txt | grep -w "Vmess TLS" | cut -d: -f2|sed 's/ //g')"
-nontls="$(cat ~/log-install.txt | grep -w "Vmess None TLS" | cut -d: -f2|sed 's/ //g')"
+none="$(cat ~/log-install.txt | grep -w "Vmess None TLS" | cut -d: -f2|sed 's/ //g')"
 domain=$(cat /etc/xray/domain)
 uuid=$(grep "},{" /etc/xray/config.json | cut -b 11-46 | sed -n "${CLIENT_NUMBER}"p)
 exp=$(grep -E "^### " "/etc/xray/config.json" | cut -d ' ' -f 3 | sed -n "${CLIENT_NUMBER}"p)
@@ -44,53 +48,90 @@ hariini=`date -d "0 days" +"%Y-%m-%d"`
 #vmess_base642=$( base64 -w 0 <<< $vmess_json2)
 #xrayv2ray1="vmess://$(base64 -w 0 /etc/xray/vmess-$user-tls.json)"
 #xrayv2ray2="vmess://$(base64 -w 0 /etc/xray/vmess-$user-nontls.json)"
+asu=`cat<<EOF
+      {
+      "v": "2",
+      "ps": "${user}",
+      "add": "${domain}",
+      "port": "443",
+      "id": "${uuid}",
+      "aid": "0",
+      "net": "ws",
+      "path": "/vmess",
+      "type": "none",
+      "host": "${domain}",
+      "tls": "tls"
+}
+EOF`
+ask=`cat<<EOF
+      {
+      "v": "2",
+      "ps": "${user}",
+      "add": "${domain}",
+      "port": "80",
+      "id": "${uuid}",
+      "aid": "0",
+      "net": "ws",
+      "path": "/vmess",
+      "type": "none",
+      "host": "${domain}",
+      "tls": "none"
+}
+EOF`
+grpc=`cat<<EOF
+      {
+      "v": "2",
+      "ps": "${user}",
+      "add": "${domain}",
+      "port": "443",
+      "id": "${uuid}",
+      "aid": "0",
+      "net": "grpc",
+      "path": "vmess-grpc",
+      "type": "none",
+      "host": "${domain}",
+      "tls": "tls"
+}
+EOF`
 vmess_base641=$( base64 -w 0 <<< $vmess_json1)
 vmess_base642=$( base64 -w 0 <<< $vmess_json2)
 vmess_base643=$( base64 -w 0 <<< $vmess_json3)
-vmess_base644=$( base64 -w 0 <<< $vmess_json4)
-vmess_base645=$( base64 -w 0 <<< $vmess_json5)
-vmess_base646=$( base64 -w 0 <<< $vmess_json6)
-vmess_base647=$( base64 -w 0 <<< $vmess_json7)
 vmesslink1="vmess://$(echo $asu | base64 -w 0)"
 vmesslink2="vmess://$(echo $ask | base64 -w 0)"
-vmesslink3="vmess://$(echo $asi | base64 -w 0)"
-vmesslink4="vmess://$(echo $aso | base64 -w 0)"
-vmesslink5="vmess://$(echo $grpc | base64 -w 0)"
-vmesslink6="vmess://$(echo $ama | base64 -w 0)"
-vmesslink7="vmess://$(echo $ami | base64 -w 0)"
+vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
 clear
-echo -e "----------------------------------" | tee -a /etc/log-create-user.log
-echo -e "\\E[0;41;36m        Xray/Vmess Account        \E[0m" | tee -a /etc/log-create-user.log
-echo -e "----------------------------------" | tee -a /etc/log-create-user.log
-echo -e "Remarks   : ${user}" | tee -a /etc/log-create-user.log
-echo -e "Domain    : ${domain}" | tee -a /etc/log-create-user.log
-echo -e "Port TLS  : ${tls}" | tee -a /etc/log-create-user.log
-echo -e "Port NTLS : ${none}" | tee -a /etc/log-create-user.log
-echo -e "Port GRPC : ${tls}" | tee -a /etc/log-create-user.log
-echo -e "id        : ${uuid}" | tee -a /etc/log-create-user.log
-echo -e "alterId   : 0" | tee -a /etc/log-create-user.log
-echo -e "Security  : auto" | tee -a /etc/log-create-user.log
-echo -e "Network   : ws/grpc" | tee -a /etc/log-create-user.log
-echo -e "Path      : /vmess" | tee -a /etc/log-create-user.log
-#echo -e "Path      : /worryfree" | tee -a /etc/log-create-user.log
-#echo -e "Path     : /kuota-habis" | tee -a /etc/log-create-user.log
-echo -e "SerName   : vmess-grpc" | tee -a /etc/log-create-user.log
-echo -e "----------------------------------" | tee -a /etc/log-create-user.log
-echo -e "Link TLS : ${vmesslink1}" | tee -a /etc/log-create-user.log
-echo -e "----------------------------------" | tee -a /etc/log-create-user.log
-echo -e "Link none TLS : ${vmesslink2}" | tee -a /etc/log-create-user.log
-echo -e "----------------------------------" | tee -a /etc/log-create-user.log
-#echo -e "Link (WORRYFREE) : ${vmesslink3}" | tee -a /etc/log-create-user.log
-#echo -e "----------------------------------" | tee -a /etc/log-create-user.log
-#echo -e "Link none (FLEX) : ${vmesslink4}" | tee -a /etc/log-create-user.log
-#echo -e "----------------------------------" | tee -a /etc/log-create-user.log
-echo -e "Link GRPC : ${vmesslink5}" | tee -a /etc/log-create-user.log
-echo -e "----------------------------------" | tee -a /etc/log-create-user.log
-echo -e "Expired On : $exp" | tee -a /etc/log-create-user.log
-echo -e "----------------------------------" | tee -a /etc/log-create-user.log
-echo "" | tee -a /etc/log-create-user.log
-rm /etc/xray/$user-tls.json > /dev/null 2>&1
-rm /etc/xray/$user-none.json > /dev/null 2>&1
-read -n 1 -s -r -p "Press any key to back on menu"
+echo -e "$COLOR1+-------------------------------------------------+${NC}"
+echo -e "$COLOR1¦${NC} ${COLBG1}            • CREATE VMESS USER •              ${NC} $COLOR1¦$NC"
+echo -e "$COLOR1+-------------------------------------------------+${NC}"
+echo -e "$COLOR1+-------------------------------------------------+${NC}"
+echo -e "$COLOR1 ${NC} Remarks       : ${user}"
+echo -e "$COLOR1 ${NC} Expired On    : $exp" 
+echo -e "$COLOR1 ${NC} Domain        : ${domain}" 
+echo -e "$COLOR1 ${NC} Port TLS      : ${tls}" 
+echo -e "$COLOR1 ${NC} Port none TLS : ${none}" 
+echo -e "$COLOR1 ${NC} Port  GRPC    : ${tls}" 
+echo -e "$COLOR1 ${NC} id            : ${uuid}" 
+echo -e "$COLOR1 ${NC} alterId       : 0" 
+echo -e "$COLOR1 ${NC} Security      : auto" 
+echo -e "$COLOR1 ${NC} Network       : ws" 
+echo -e "$COLOR1 ${NC} Path          : /vmess" 
+echo -e "$COLOR1 ${NC} Path WSS      : wss://bug.com/vmess" 
+echo -e "$COLOR1 ${NC} ServiceName   : vmess-grpc" 
+echo -e "$COLOR1+-------------------------------------------------+${NC}" 
+echo -e "$COLOR1+-------------------------------------------------+${NC}"
+echo -e "$COLOR1 ${NC} Link TLS : "
+echo -e "$COLOR1 ${NC} ${vmesslink1}" 
+echo -e "$COLOR1 ${NC} "
+echo -e "$COLOR1 ${NC} Link none TLS : "
+echo -e "$COLOR1 ${NC} ${vmesslink2}" 
+echo -e "$COLOR1 ${NC} "
+echo -e "$COLOR1 ${NC} Link GRPC : "
+echo -e "$COLOR1 ${NC} ${vmesslink3}"
+echo -e "$COLOR1+-------------------------------------------------+${NC}" 
+echo -e "$COLOR1+---------------------- BY -----------------------+${NC}"
+echo -e "$COLOR1¦${NC}                • NevermoreSSH •                 $COLOR1¦$NC"
+echo -e "$COLOR1+-------------------------------------------------+${NC}" 
+echo ""
 
+read -n 1 -s -r -p "   Press any key to back on menu"
 menu-vmess
