@@ -48,6 +48,8 @@ wget -q -O /usr/bin/cekl "https://raw.githubusercontent.com/NevermoreSSH/nitro/m
 wget -q -O /usr/bin/dell "https://raw.githubusercontent.com/NevermoreSSH/nitro/main/dell.sh"
 wget -q -O /usr/bin/dns "https://raw.githubusercontent.com/NevermoreSSH/nitro/main/dns.sh"
 wget -q -O /usr/bin/netf "https://raw.githubusercontent.com/NevermoreSSH/nitro/main/netf.sh"
+wget -q -O /usr/bin/userv2ray "https://raw.githubusercontent.com/NevermoreSSH/nitro/main/userv2ray.sh"
+wget -q -O /usr/bin/uservless "https://raw.githubusercontent.com/NevermoreSSH/nitro/main/uservless.sh"
 #wget -q -O /usr/bin/ns-menu "https://raw.githubusercontent.com/NevermoreSSH/nitro/main/autoscript-ssh-slowdns-main/slowdns.sh && chmod +x slowdns.sh && ./slowdns.sh"
 wget https://raw.githubusercontent.com/NevermoreSSH/nitro/main/backup/set-br.sh
 bash set-br.sh
@@ -92,6 +94,8 @@ chmod +x /usr/bin/changer
 chmod +x /usr/bin/fix
 chmod +x /usr/bin/dns
 chmod +x /usr/bin/netf
+chmod +x /usr/bin/userv2ray
+chmod +x /usr/bin/uservless
 #chmod +x /usr/bin/update
 
 
